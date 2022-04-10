@@ -1,5 +1,5 @@
 let angle = 10;
-let displacement = 40;
+let offset  = 40;
 let scale = 9;
 let velocityAngle = 1.8;
 let velocityScale = 0.09;
@@ -9,27 +9,27 @@ let p5canvas;
 function setup() {
     p5canvas = createCanvas(displayWidth,displayHeight);
     background(0);
-    ellipseMode(CENTER);
+    frameRate(150);
 }
 
 function draw() {
-    if(frameCount === (12*60)){
+    if(frameCount === (480)) {
         velocityScale = 0.7;
     }
-    if(frameCount === (17*60)) {
+    if(frameCount === (680)) {
         velocityScale = 0.05;
         width = 20;
         height = 20;
     }
-
-    let x = displacement + cos(angle) * scale;
-    let y = displacement + sin(angle) * scale;
+    
+    let x = offset  + cos(angle) * scale;
+    let y = offset  + sin(angle) * scale;
 
     fill(random(40,255),0,0);
-    ellipse((displayWidth/2)+x,(displayHeight/2)+y, width,height);
+    ellipse(((displayWidth/2)-width)+x,(( displayHeight/2)-height)+y, width,height);
 
     angle += velocityAngle;
-    scale += velocityScale;
+    scale += velocityScale;   
 }
 
 
